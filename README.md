@@ -57,10 +57,10 @@ node:erbium-slim     71               6 high, 8 medium, 57 low
 You can have the output in a JSON format and manipulate it with some simple jq commands.
 Some examples:
 * Get all vulnerabilities with "High" severity:
-** cat scan-results.json| jq '. | (.vulnerabilities[] | select(.severity=="high"))'
+cat scan-results.json| jq '. | (.vulnerabilities[] | select(.severity=="high"))'
 * Severity "High", but ignore base image vulns:
-** docker scan <image> --exclude-base | jq <same as above>
+docker scan <image> --exclude-base | jq <same as above>
 * "High" severity + mature exploit:
-** cat scan-results.json |  jq '. | (.vulnerabilities[] | select(.exploit | contains("Functional")) | select(.severity=="high"))'
+cat scan-results.json |  jq '. | (.vulnerabilities[] | select(.exploit | contains("Functional")) | select(.severity=="high"))'
 * "High" + fixable, group by Dockerfile line:
-** docker scan blog -f Dockerfile --exclude-base --json | jq '[.vulnerabilities[] | select(.nearestFixedInVersion) | select(.severity == "high") |  {packageName, dockerfileInstruction, title, severity, version, nearestFixedInVersion}]'
+docker scan blog -f Dockerfile --exclude-base --json | jq '[.vulnerabilities[] | select(.nearestFixedInVersion) | select(.severity == "high") |  {packageName, dockerfileInstruction, title, severity, version, nearestFixedInVersion}]'
