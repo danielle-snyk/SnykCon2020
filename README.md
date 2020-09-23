@@ -64,3 +64,10 @@ Some examples:
 ```cat scan-results.json |  jq '. | (.vulnerabilities[] | select(.exploit | contains("Functional")) | select(.severity=="high"))'```
 * "High" + fixable, group by Dockerfile line:
 ```docker scan blog -f Dockerfile --exclude-base --json | jq '[.vulnerabilities[] | select(.nearestFixedInVersion) | select(.severity == "high") |  {packageName, dockerfileInstruction, title, severity, version, nearestFixedInVersion}]'```
+
+## Sign-up for Snyk through Docker Desktop
+
+If you enjoy scanning container images through Docker, you can signup for Snyk by running `docker scan --login` and get 200 free scans per month.
+
+
+![Signup to Snyk through Docker](assets/docker-login.png)
