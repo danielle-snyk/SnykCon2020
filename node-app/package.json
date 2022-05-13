@@ -1,5 +1,5 @@
 {
-  "name": "snykcon2021",
+  "name": "snykcon2020",
   "version": "0.1.0",
   "description": "A sample Node app for Snyk container demo",
   "main": "app.js",
